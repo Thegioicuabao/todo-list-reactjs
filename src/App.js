@@ -6,9 +6,9 @@ class App extends React.Component {
   constructor(){
     super();
     this.TodoItem = [
-    'Mua bim bim', 
-    'đi chợ', 
-    'đi đá bóng'
+    { title: 'Mua bim bim', isComplete: true }, 
+    { title: 'đi chợ', isComplete: true }, 
+    { title: 'đi đá bóng', isComplete: false }
     ];
   }
 
@@ -16,7 +16,8 @@ class App extends React.Component {
     return (
       <div className="App">
         {
-          this.TodoItem.map((item, index) => <TodoItem key={index} title={item}/>)
+          this.TodoItem.map((item, index) => 
+          <TodoItem key={index} item={item}/>)
         }
       </div>
     );
