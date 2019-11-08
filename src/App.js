@@ -37,6 +37,9 @@ class App extends React.Component {
     if(todoItems.length)
     return (
       <div className="App">
+        <header className="App-header">
+          <h1>todos</h1>
+        </header>
         {
           todoItems.length && todoItems.map((item, index) => 
             <TodoItem 
