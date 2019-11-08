@@ -5,21 +5,48 @@ import TodoItem from './components/Todoitem'
 class App extends React.Component {
   constructor(){
     super();
-    this.TodoItem = [
-      { title: 'Mua bim bim', isComplete: true }, 
-      { title: 'đi chợ', isComplete: true }, 
-      { title: 'đi đá bóng', isComplete: false }
-    ];
+    this.state = {
+      todoItems: [
+        { title: 'Mua bim bim', isComplete: true }, 
+        { title: 'đi chợ', isComplete: true }, 
+        { title: 'đi đá bóng', isComplete: false }
+      ]
+    }
   }
-
+  
+  onItemClicked(item) {
+    return (event) => {
+      const isComplete = item.isComplete;
+      const { todoItems } = this.state;
+      const index = todoItems.indexOf(item);
+      this.setState({
+        todoItems: [
+          ...todoItems.slice(0, index),
+          {
+            ...item,  
+            isComplete: !isComplete
+          },
+          ...todoItems.slice(index + 1)
+        ]
+      }) 
+    }
+   
+  }
   render() {
+    const { todoItems } = this.state;
+    if(todoItems.length)
     return (
       <div className="App">
         {
-          this.TodoItem.length > 0 && this.TodoItem.map((item, index) => <TodoItem key={index} item={item}/>)
+          todoItems.length && todoItems.map((item, index) => 
+            <TodoItem 
+              key={index} 
+              item={item} 
+              onClick={this.onItemClicked(item)}/>
+            )
         }
         {
-          this.TodoItem.length === 0 && 'Nothing here.'
+          todoItems.length === 0 && 'Nothing here.'
         }
       </div>
     );
