@@ -1,26 +1,42 @@
 
-.App {
+.todos {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 67px -24px rgba(0,0,0,0.2);
+}
+.todos .header {
+  border-bottom: 1px solid rgba(214, 214, 214, 0.363);
+  padding-bottom: 25px;
+}
+.todos .header h1 {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 100px;
+  font-size: 100px;
+  font-weight: 300;
   text-align: center;
-  
+  color: rgba(9, 114, 211, 0.322);
+  display: block;
+    
 }
-
-.App-header {
-  /* min-height: 100vh;
+.todos .header .input {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
 }
-.App-header h1{
-    top: -155px;
-    width: 100%;
-    font-size: 100px;
-    font-weight: 100;
-    text-align: center;
-    color: rgba(175, 47, 47, 0.15);
+.todos .header .input img{
+  margin: auto;
+  margin-left: 18px;
+  margin-right: 10px;
+  opacity: 0.5;
 }
-.App-link {
-  color: #09d3ac;
+.todos .header .input input {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 300;
+  font-size: 20px;
+  border-bottom: 1px solid rgb(184, 184, 184);
+  padding: 10px 5px 5px 10px;
+  border: none;
+  outline: none;
+  cursor: text;
+  width: 100%;
 }

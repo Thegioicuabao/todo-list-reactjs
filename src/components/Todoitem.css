@@ -1,11 +1,22 @@
 .TodoItem {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 300;
-    font-size: 24px;
-    color: #4d4d4d;
+    font-size: 20px;
+    display: flex;
+    border-bottom: 1px solid rgba(214, 214, 214, 0.363);
+    padding: 10px 5px;
 }
-
-.TodoItem-complete {
+.TodoItem:last-child {
+    border-bottom: none;
+}
+.TodoItem img {
+    margin: auto 10px;
+}
+.TodoItem > p {
+    padding: 10px 5px 5px 10px;
+    text-align: left;
+}
+.TodoItem-complete p{
     text-decoration: line-through;
-    opacity: 0.5;
+    opacity: 0.2;
 }

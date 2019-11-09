@@ -63,16 +63,19 @@ class App extends React.Component {
     const { todoItems, newItem } = this.state;
     if(todoItems.length)
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="todos">
+        <header className="header">
           <h1>todos</h1>
-          <img src={checkAll} width={24} height={24}/>
-          <input 
-            type="text" 
-            placeholder="Add a new item"
-            value = {newItem}
-            onChange = {this.onChange} 
-            onKeyUp={this.onKeyUp}/>
+          <div className="input">
+            <img src={checkAll} width={20} height={20}/>
+            <input 
+              type="text" 
+              placeholder="Add a new item"
+              value = {newItem}
+              onChange = {this.onChange} 
+              onKeyUp={this.onKeyUp}/>
+            </div>
+          
         </header>
         {
           todoItems.length && todoItems.map((item, index) => 
