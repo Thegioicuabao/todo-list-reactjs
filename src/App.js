@@ -89,9 +89,8 @@ class App extends React.Component {
         <h1>todos</h1>
         <div className="todos">
           <header className="header">
-          
             <div className="input">
-              <img alt="" src={checkAll} width={20} height={20}/>
+              <img alt="" src={checkAll} width={17} height={17}/>
               <input 
                 type="text" 
                 placeholder="Add a new item"
@@ -114,9 +113,9 @@ class App extends React.Component {
           } */}
           <div className="foo">
             <ul className="filter">
-              <li className="button"><a href="/" onClick={this.All}>All</a></li>
-              <li className="button"><a href="/" onClick={this.Active}>Active</a></li>
-              <li className="button"><a href="/" onClick={this.Completed}>Completed</a></li>
+              <li><a href="#" onClick={this.All}>All</a></li>
+              <li><a href="#" onClick={this.Active}>Active</a></li>
+              <li><a href="#" onClick={this.Completed}>Completed</a></li>
             </ul>   
           </div>
         </div>
