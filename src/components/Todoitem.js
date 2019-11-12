@@ -13,7 +13,7 @@ class TodoItem extends Component{
       <div className={classNames('TodoItem', {
         'TodoItem-complete': item.isComplete
       })}>
-        <img src={url} width={24} height={24} onClick={onClick}/>
+        <img alt="" src={url} width={24} height={24} onClick={onClick}/>
         <p>{this.props.item.title}</p>
       </div>
     )

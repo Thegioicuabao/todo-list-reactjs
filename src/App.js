@@ -80,9 +80,10 @@ class App extends React.Component {
   }
   render() {
     const { todoItems, newItem, currentFilter } = this.state;
-    if(currentFilter === "All") var todoItemsFilter = todoItems;
-    if(currentFilter === "Active")  var todoItemsFilter = todoItems.filter(x => x.isComplete === false);
-    if(currentFilter === "Completed") var todoItemsFilter = todoItems.filter(x => x.isComplete === true);
+    let todoItemsFilter;
+    if(currentFilter === "All") todoItemsFilter = todoItems;
+    if(currentFilter === "Active")  todoItemsFilter = todoItems.filter(x => x.isComplete === false);
+    if(currentFilter === "Completed") todoItemsFilter = todoItems.filter(x => x.isComplete === true);
     return (
       <div className="container">
         <h1>todos</h1>
@@ -90,7 +91,7 @@ class App extends React.Component {
           <header className="header">
           
             <div className="input">
-              <img src={checkAll} width={20} height={20}/>
+              <img alt="" src={checkAll} width={20} height={20}/>
               <input 
                 type="text" 
                 placeholder="Add a new item"
@@ -113,9 +114,9 @@ class App extends React.Component {
           } */}
           <div className="foo">
             <ul className="filter">
-              <li className="button"><a onClick={this.All}>All</a></li>
-              <li className="button"><a onClick={this.Active}>Active</a></li>
-              <li className="button"><a onClick={this.Completed}>Completed</a></li>
+              <li className="button"><a href="/" onClick={this.All}>All</a></li>
+              <li className="button"><a href="/" onClick={this.Active}>Active</a></li>
+              <li className="button"><a href="/" onClick={this.Completed}>Completed</a></li>
             </ul>   
           </div>
         </div>
