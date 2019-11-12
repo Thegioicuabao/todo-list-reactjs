@@ -7,6 +7,7 @@ class App extends React.Component {
     super();
     this.state = {
       newItem: "",
+      currentFilter: "All",
       todoItems: [
         { title: 'Mua bim bim', isComplete: true }, 
         { title: 'đi chợ', isComplete: true }, 
@@ -15,6 +16,9 @@ class App extends React.Component {
     }
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.All = this.All.bind(this);
+    this.Active = this.Active.bind(this);
+    this.Completed = this.Completed.bind(this);
   }
   
   onItemClicked(item) {
@@ -59,38 +63,66 @@ class App extends React.Component {
       newItem: event.target.value
     })
   }
+  All(){
+    this.setState({
+      currentFilter: "All"
+    })
+  }
+  Active(){
+    this.setState({
+      currentFilter: "Active"
+    })
+  }
+  Completed(){
+    this.setState({
+      currentFilter: "Completed"
+    })
+  }
   render() {
-    const { todoItems, newItem } = this.state;
-    if(todoItems.length)
+    const { todoItems, newItem, currentFilter } = this.state;
+    if(currentFilter === "All") var todoItemsFilter = todoItems;
+    if(currentFilter === "Active")  var todoItemsFilter = todoItems.filter(x => x.isComplete === false);
+    if(currentFilter === "Completed") var todoItemsFilter = todoItems.filter(x => x.isComplete === true);
     return (
-      <div className="todos">
-        <header className="header">
-          <h1>todos</h1>
-          <div className="input">
-            <img src={checkAll} width={20} height={20}/>
-            <input 
-              type="text" 
-              placeholder="Add a new item"
-              value = {newItem}
-              onChange = {this.onChange} 
-              onKeyUp={this.onKeyUp}/>
-            </div>
+      <div className="container">
+        <h1>todos</h1>
+        <div className="todos">
+          <header className="header">
           
-        </header>
-        {
-          todoItems.length && todoItems.map((item, index) => 
-            <TodoItem 
-              key={index} 
-              item={item} 
-              onClick={this.onItemClicked(item)}/>
-            )
-        }
-        {
-          todoItems.length === 0 && 'Nothing here.'
-        }
+            <div className="input">
+              <img src={checkAll} width={20} height={20}/>
+              <input 
+                type="text" 
+                placeholder="Add a new item"
+                value = {newItem}
+                onChange = {this.onChange} 
+                onKeyUp={this.onKeyUp}/>
+              </div>
+            
+          </header>
+          {
+            todoItemsFilter.length > 0 && todoItemsFilter.map((item, index) => 
+              <TodoItem 
+                key={index} 
+                item={item} 
+                onClick={this.onItemClicked(item)}/>
+              )
+          }
+          {/* {
+            todoItemsFilter.length === 0 && 'Nothing here'
+          } */}
+          <div className="foo">
+            <ul className="filter">
+              <li className="button"><a onClick={this.All}>All</a></li>
+              <li className="button"><a onClick={this.Active}>Active</a></li>
+              <li className="button"><a onClick={this.Completed}>Completed</a></li>
+            </ul>   
+          </div>
+        </div>
       </div>
     );
-  }
+      }
+    
 }
 
 export default App;
