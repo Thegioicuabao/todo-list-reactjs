@@ -19,6 +19,7 @@ class App extends React.Component {
     this.All = this.All.bind(this);
     this.Active = this.Active.bind(this);
     this.Completed = this.Completed.bind(this);
+    this.Delete = this.Delete.bind(this);
   }
   
   onItemClicked(item) {
@@ -78,12 +79,22 @@ class App extends React.Component {
       currentFilter: "Completed"
     })
   }
+
+  Delete(){
+    const { todoItems } = this.state;
+    var todoItemsFilter = todoItems.filter(x => x.isComplete === false);
+    this.setState({
+      currentFilter: "Delete",
+      todoItems: todoItemsFilter
+    })
+  }
   render() {
     const { todoItems, newItem, currentFilter } = this.state;
     let todoItemsFilter;
     if(currentFilter === "All") todoItemsFilter = todoItems;
     if(currentFilter === "Active")  todoItemsFilter = todoItems.filter(x => x.isComplete === false);
     if(currentFilter === "Completed") todoItemsFilter = todoItems.filter(x => x.isComplete === true);
+    if(currentFilter === "Delete") todoItemsFilter = todoItems
     return (
       <div className="container">
         <h1>todos</h1>
@@ -113,9 +124,10 @@ class App extends React.Component {
           } */}
           <div className="foo">
             <ul className="filter">
-              <li><a href="#" onClick={this.All}>All</a></li>
-              <li><a href="#" onClick={this.Active}>Active</a></li>
-              <li><a href="#" onClick={this.Completed}>Completed</a></li>
+              <li><p onClick={this.All}>All</p></li>
+              <li><p onClick={this.Active}>Active</p></li>
+              <li><p onClick={this.Completed}>Completed</p></li>
+              <li><p onClick={this.Delete}>Delete</p></li>
             </ul>   
           </div>
         </div>

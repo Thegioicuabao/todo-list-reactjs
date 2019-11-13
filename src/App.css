@@ -57,7 +57,7 @@
   padding: 10px;
   
 }
-.filter li a {
+.filter li p {
   text-align: center;
   margin: 0 10px 0 10px;
   padding: 3px;
@@ -68,6 +68,6 @@
   opacity: 0.5;
 }
 
-.filter li a:hover {
+.filter li p:hover {
   background-color: rgba(96, 99, 105, 0.322);
 }
