@@ -127,8 +127,8 @@ class App extends React.Component {
               <li><p onClick={this.All}>All</p></li>
               <li><p onClick={this.Active}>Active</p></li>
               <li><p onClick={this.Completed}>Completed</p></li>
-              <li><p onClick={this.Delete}>Delete</p></li>
-            </ul>   
+            </ul>
+            <p className="delete" onClick={this.Delete}>Clear completed</p>
           </div>
         </div>
       </div>
