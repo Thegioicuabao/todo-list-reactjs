@@ -5,6 +5,7 @@
     display: flex;
     border-bottom: 1px solid rgba(214, 214, 214, 0.363);
     padding: 0px 5px;
+    word-break: break-all;
 }
 .TodoItem:last-child {
     border-bottom: none;
