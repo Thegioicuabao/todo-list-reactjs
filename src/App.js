@@ -109,19 +109,17 @@ class App extends React.Component {
                 onChange = {this.onChange} 
                 onKeyUp={this.onKeyUp}/>
               </div>
-            
           </header>
           {
             todoItemsFilter.length > 0 && todoItemsFilter.map((item, index) => 
               <TodoItem 
                 key={index} 
                 item={item} 
-                onClick={this.onItemClicked(item)}/>
+                checkButton={this.onItemClicked(item)}
+                deleteButton={this.onItemClicked(item)}
+              />
               )
           }
-          {/* {
-            todoItemsFilter.length === 0 && 'Nothing here'
-          } */}
           <div className="foo">
             <ul className="filter">
               <li><p onClick={this.All}>All</p></li>
@@ -133,8 +131,7 @@ class App extends React.Component {
         </div>
       </div>
     );
-      }
-    
+  }
 }
 
 export default App;

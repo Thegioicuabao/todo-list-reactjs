@@ -50,7 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-
+  background-color: rgba(240, 240, 240, 0.205);
 }
 .filter {
   display: flex;
