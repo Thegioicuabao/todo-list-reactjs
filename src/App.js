@@ -19,6 +19,7 @@ class App extends React.Component {
     this.All = this.All.bind(this);
     this.Active = this.Active.bind(this);
     this.Completed = this.Completed.bind(this);
+    this.ClearCompleted = this.ClearCompleted.bind(this);
     this.Delete = this.Delete.bind(this);
   }
   
@@ -79,14 +80,26 @@ class App extends React.Component {
       currentFilter: "Completed"
     })
   }
-
-  Delete(){
+  ClearCompleted(){
     const { todoItems } = this.state;
     var todoItemsFilter = todoItems.filter(x => x.isComplete === false);
     this.setState({
-      currentFilter: "Delete",
+      currentFilter: "ClearCompleted",
       todoItems: todoItemsFilter
     })
+  }
+  Delete(item) {
+    return (event) => {
+      const isComplete = item.isComplete;
+      const { todoItems } = this.state;
+      const index = todoItems.indexOf(item);
+      this.setState({
+        todoItems: [
+          ...todoItems.slice(0, index),
+          ...todoItems.slice(index + 1)
+        ]
+      }) 
+    }
   }
   render() {
     const { todoItems, newItem, currentFilter } = this.state;
@@ -94,7 +107,7 @@ class App extends React.Component {
     if(currentFilter === "All") todoItemsFilter = todoItems;
     if(currentFilter === "Active")  todoItemsFilter = todoItems.filter(x => x.isComplete === false);
     if(currentFilter === "Completed") todoItemsFilter = todoItems.filter(x => x.isComplete === true);
-    if(currentFilter === "Delete") todoItemsFilter = todoItems
+    if(currentFilter === "ClearCompleted") todoItemsFilter = todoItems
     return (
       <div className="container">
         <h1>todos</h1>
@@ -116,7 +129,7 @@ class App extends React.Component {
                 key={index} 
                 item={item} 
                 checkButton={this.onItemClicked(item)}
-                deleteButton={this.onItemClicked(item)}
+                deleteButton={this.Delete(item)}
               />
               )
           }
@@ -126,7 +139,7 @@ class App extends React.Component {
               <li><p onClick={this.Active}>Active</p></li>
               <li><p onClick={this.Completed}>Completed</p></li>
             </ul>
-            <p className="delete" onClick={this.Delete}>Clear completed</p>
+            <p className="ClearCompleted" onClick={this.ClearCompleted}>Clear completed</p>
           </div>
         </div>
       </div>

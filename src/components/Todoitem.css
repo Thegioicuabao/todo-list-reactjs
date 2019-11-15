@@ -14,12 +14,18 @@
 }
 .TodoItem > p {
     padding: 10px 5px 5px 10px;
-    text-align: left;
 }
 .TodoItem-complete p{
     text-decoration: line-through;
     opacity: 0.2;
 }
-.TodoItem:hover button::after {
-    content: "zx";
+.TodoItem .delete {
+  opacity: 0;
+  margin-left: auto;
+}
+.TodoItem:hover .delete{
+  opacity: 0.4;
+}
+.TodoItem:hover .delete:hover{
+  opacity: 0.7;
 }

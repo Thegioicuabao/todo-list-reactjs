@@ -74,7 +74,7 @@
 .filter li p:hover {
   background-color: rgba(96, 99, 105, 0.322);
 }
-.foo .delete{
+.foo .ClearCompleted{
   margin: 0 10px 0 10px;
   padding: 3px;
   border-radius: 8%;
@@ -83,7 +83,7 @@
   color: inherit;
   opacity: 0.5;
 }
-.foo .delete:hover {
+.foo .ClearCompleted:hover {
   cursor: pointer;
-  background-color: rgba(233, 82, 77, 0.322);
+  background-color: rgba(96, 99, 105, 0.322);
 }
