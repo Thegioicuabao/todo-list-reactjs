@@ -21,6 +21,7 @@ class App extends React.Component {
     this.Completed = this.Completed.bind(this);
     this.ClearCompleted = this.ClearCompleted.bind(this);
     this.Delete = this.Delete.bind(this);
+    this.SelectAll = this.SelectAll.bind(this);
   }
   
   onItemClicked(item) {
@@ -101,6 +102,17 @@ class App extends React.Component {
       }) 
     }
   }
+  SelectAll() {
+      const { todoItems } = this.state;
+      for(var x in todoItems){
+        todoItems[x].isComplete = true;
+      }
+      var todoItemsFilter = todoItems
+      this.setState({
+        currentFilter: "SelectAll",
+        todoItems: todoItemsFilter
+      })
+  }
   render() {
     const { todoItems, newItem, currentFilter } = this.state;
     let todoItemsFilter;
@@ -108,13 +120,14 @@ class App extends React.Component {
     if(currentFilter === "Active")  todoItemsFilter = todoItems.filter(x => x.isComplete === false);
     if(currentFilter === "Completed") todoItemsFilter = todoItems.filter(x => x.isComplete === true);
     if(currentFilter === "ClearCompleted") todoItemsFilter = todoItems
+    if(currentFilter === "SelectAll") todoItemsFilter = todoItems
     return (
       <div className="container">
         <h1>todos</h1>
         <div className="todos">
           <header className="header">
             <div className="input">
-              <img alt="" src={checkAll} width={17} height={17}/>
+              <img alt="" src={checkAll} width={17} height={17} onClick={this.SelectAll}/>
               <input 
                 type="text" 
                 placeholder="Add a new item"
