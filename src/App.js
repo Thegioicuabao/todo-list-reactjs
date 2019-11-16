@@ -3,16 +3,20 @@ import './App.css';
 import TodoItem from './components/Todoitem'
 import checkAll from './image/check-all.svg'
 class App extends React.Component {
+  
   constructor(){
     super();
-    this.state = {
-      newItem: "",
-      currentFilter: "All",
-      todoItems: [
-        { title: 'Mua bim bim', isComplete: true }, 
-        { title: 'đi chợ', isComplete: true }, 
-        { title: 'đi đá bóng', isComplete: false }
-      ]
+    var storageKey = "data";
+    var data = localStorage.getItem(storageKey)
+    if(data){
+      this.state = JSON.parse(data);
+    }
+    else {
+      this.state = {
+        "newItem":"",
+        "currentFilter":"All",
+        "todoItems":[]
+      }
     }
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -43,6 +47,7 @@ class App extends React.Component {
    
   }
   onKeyUp(event) {
+
     if (event.keyCode === 13) {
       let text =  event.target.value;
       if(!text) {
@@ -60,8 +65,10 @@ class App extends React.Component {
         ]
       })
     }
+    
   }
   onChange(event) {
+
     this.setState({
       newItem: event.target.value
     })
@@ -121,6 +128,8 @@ class App extends React.Component {
     if(currentFilter === "Completed") todoItemsFilter = todoItems.filter(x => x.isComplete === true);
     if(currentFilter === "ClearCompleted") todoItemsFilter = todoItems
     if(currentFilter === "SelectAll") todoItemsFilter = todoItems
+    var storageKey = "data"
+    localStorage.setItem(storageKey, JSON.stringify(this.state))
     return (
       <div className="container">
         <h1>todos</h1>
@@ -130,7 +139,7 @@ class App extends React.Component {
               <img alt="" src={checkAll} width={17} height={17} onClick={this.SelectAll}/>
               <input 
                 type="text" 
-                placeholder="Add a new item"
+                placeholder="What needs to be done?"
                 value = {newItem}
                 onChange = {this.onChange} 
                 onKeyUp={this.onKeyUp}/>
@@ -146,6 +155,8 @@ class App extends React.Component {
               />
               )
           }
+          {
+          todoItemsFilter.length > 0 &&
           <div className="foo">
             <ul className="filter">
               <li><p onClick={this.All}>All</p></li>
@@ -154,6 +165,7 @@ class App extends React.Component {
             </ul>
             <p className="ClearCompleted" onClick={this.ClearCompleted}>Clear completed</p>
           </div>
+          }
         </div>
       </div>
     );

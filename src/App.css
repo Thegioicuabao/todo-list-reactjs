@@ -19,7 +19,7 @@
   text-align: center;
   color: rgba(9, 114, 211, 0.322);
   display: block;
-  margin: 0;
+  margin: 30px 0 0 0;
 }
 .todos .header .input {
   display: flex;
@@ -33,7 +33,7 @@
 .todos .header .input img{
   margin: auto;
   margin-left: 9px;
-  margin-right: 25px;
+  margin-right: 20px;
   opacity: 0.4;
 }
 .todos .header .input input {
@@ -51,6 +51,7 @@
   justify-content: center;
   align-items: baseline;
   background-color: rgba(240, 240, 240, 0.205);
+  margin-bottom: 100px;
 }
 .filter {
   display: flex;
