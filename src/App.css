@@ -49,7 +49,7 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   background-color: rgba(240, 240, 240, 0.205);
   margin-bottom: 100px;
 }
@@ -87,4 +87,18 @@
 .foo .ClearCompleted:hover {
   cursor: pointer;
   background-color: rgba(96, 99, 105, 0.322);
+}
+@media screen and (max-width: 500px){
+  .todos {
+    width: 320px;
+  }
+  .container h1 {
+    font-size: 50px;
+    font-weight: 300;
+    text-align: center;
+    color: rgba(9, 114, 211, 0.322);
+    display: block;
+    margin: 40px 0 0 20px;
+    height: 50px;
+  }
 }
