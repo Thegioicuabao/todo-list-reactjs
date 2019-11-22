@@ -88,6 +88,10 @@
   cursor: pointer;
   background-color: rgba(96, 99, 105, 0.322);
 }
+
+.foo:focus .filter .All{
+  background-color: black;
+}
 @media screen and (max-width: 500px){
   .todos {
     width: 320px;

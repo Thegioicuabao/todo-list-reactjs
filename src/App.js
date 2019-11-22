@@ -156,7 +156,7 @@ class App extends React.Component {
               )
           }
           {
-          todoItemsFilter.length > 0 &&
+
           <div className="foo">
             <ul className="filter">
               <li><p onClick={this.All}>All</p></li>

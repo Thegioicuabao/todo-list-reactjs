@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import checkImg from '../image/check.svg'
 import checkCompleteImg from '../image/check-complete.svg'
 import remove from '../image/remove.svg'
+import PropTypes from 'prop-types'; 
 class TodoItem extends Component{
   render(){
     const { item, checkButton, deleteButton } = this.props;
@@ -20,5 +21,12 @@ class TodoItem extends Component{
         </div>
     )
   }
+}
+TodoItem.propTypes = {
+  item: PropTypes.shape({
+    isComplete: PropTypes.bool,
+    title: PropTypes.string
+  }),
+  checkButton: PropTypes.func
 }
 export default TodoItem
