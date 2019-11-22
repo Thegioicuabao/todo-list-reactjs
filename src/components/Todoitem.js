@@ -24,9 +24,9 @@ class TodoItem extends Component{
 }
 TodoItem.propTypes = {
   item: PropTypes.shape({
-    isComplete: PropTypes.bool,
-    title: PropTypes.string
+    isComplete: PropTypes.bool.isRequired,
+    title: PropTypes.string.isRequired
   }),
-  checkButton: PropTypes.func
+  checkButton: PropTypes.func.isRequired
 }
 export default TodoItem
